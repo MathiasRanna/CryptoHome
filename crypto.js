@@ -1,3 +1,5 @@
+import {ApiKey} from "./api-env";
+
 if (typeof window !== 'undefined') {
     window.require = function () {
     };
@@ -153,7 +155,6 @@ var vm = function () {
         var path = self.baseUri() + "/v1/ohlcv/BITFINEX_SPOT_" + self.currentCoin() + "_USD/history?period_id=" + period_id + "&time_start=" + startTime;
         console.log(path);
         return self.ajaxHelper(path).done(function (data) {
-            console.log(data);
             self.currentData(data);
         })
     }
@@ -162,7 +163,8 @@ var vm = function () {
         return $.ajax({
             url: url,
             type: "GET",
-            headers: {"X-CoinAPI-Key": "C6D2ABAB-BF85-4ABC-8643-1E119B7C5113"},
+            contentType: "application/jsonp",
+            headers: {"X-CoinAPI-Key": ApiKey},
             success: function (data, textStatus, request) {
                 console.log(request.getAllResponseHeaders());
                 return data;
@@ -236,7 +238,10 @@ var vm = function () {
                             label: self.currentCoin() + " Price Low (USD)",
                             data: self.currentData().map(day => day["price_low"])
                         }
-                    ]
+                    ],
+                },
+                options: {
+                    responsive: true,
                 }
             }
         ));
