@@ -17,25 +17,27 @@
         <a class="navbar-brand" href="index.html" tabindex="CryptoHome">CryptoHome</a>
         <div id="navbarContent">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" aria-current="page" href="https://github.com/MathiasRanna"><i class="fa-brands fa-github"></i> Author</a></li>
+                <li class="nav-item"><a class="nav-link" aria-current="page" href="https://github.com/MathiasRanna"><i
+                        class="fa-brands fa-github"></i> Author</a></li>
             </ul>
         </div>
     </div>
 </nav>
 
 <!-- Main body -->
-<div class="container">
+<div id="main" class="container">
     <div class="row" data-bind="foreach: iconArray">
-        <div class="col-3 cryptoContainer h-100 d-flex justify-content-center align-items-center">
-            <div data-bind="attr: { id: id}">
-                <img class="cryptoPic" src="" data-bind="attr: { src: image}"  alt="crypto_sign"/>
-                <div data-bind="text: name" class="cryptoText text-center"></div>
+        <div class="col-3 cryptoContainer">
+            <div class="cryptoContent h-100 d-flex justify-content-center align-items-center">
+                <div data-bind="attr: { id: id}">
+                    <img class="cryptoPic" src="" data-bind="attr: { src: image}" alt="crypto_sign"/>
+                    <div data-bind="text: name" class="cryptoText text-center"></div>
+                </div>
             </div>
         </div>
     </div>
 
 </div>
-
 
 
 </body>
