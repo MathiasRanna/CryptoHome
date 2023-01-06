@@ -25,7 +25,7 @@
 </nav>
 
 <!-- Main body -->
-<div id="main" class="container">
+<div id="main" class="container d-none">
     <div class="row" data-bind="foreach: iconArray">
         <div class="col-3 cryptoContainer">
             <div class="cryptoContent h-100 d-flex justify-content-center align-items-center">
@@ -36,7 +36,35 @@
             </div>
         </div>
     </div>
+</div>
 
+<!-- Coin Data -->
+<div id="coinData" class="container">
+    <div id="Filterbar" class="container">
+        <div class="row">
+            <div id="returnHome" class="col-1">
+                <button type="button" class="btn btn-light generalBtn" data-bind="event:{click: closeModal}"><i class="fa-solid fa-arrow-left"></i></button>
+            </div>
+            <!-- Filter methods -->
+            <div id="filter" class="col-7">
+                <button id="highLow" type="button" class="btn btn-light generalBtn filterBtn active" data-bind="event:{click: changeChartData}" >Price High/Low</button>
+                <button id="openClose" type="button" class="btn btn-light generalBtn filterBtn" data-bind="event:{click: changeChartData}">Price Open/Close</button>
+                <button id="volume" type="button" class="btn btn-light generalBtn filterBtn" data-bind="event:{click: changeChartData}" >Volume</button>
+                <button id="trades" type="button" class="btn btn-light generalBtn filterBtn" data-bind="event:{click: changeChartData}" >Trades</button>
+
+            </div>
+            <!-- Timestamps -->
+            <div id="times" class="col-4 text-end">
+                <button id="hour" type="button" class="btn btn-light generalBtn hourBtn" data-bind="event:{click: changeChartTime}">Hour</button>
+                <button id="day" type="button" class="btn btn-light generalBtn hourBtn" data-bind="event:{click: changeChartTime}">Day</button>
+                <button id="month" type="button" class="btn btn-light generalBtn active hourBtn" data-bind="event:{click: changeChartTime}">Month</button>
+                <button id="year" type="button" class="btn btn-light generalBtn hourBtn" data-bind="event:{click: changeChartTime}">Year</button>
+            </div>
+        </div>
+    </div>
+    <div>
+        <canvas id="coinGraph"></canvas>
+    </div>
 </div>
 
 
@@ -50,6 +78,6 @@
 <!-- jQueryUI Bundle -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
 <!-- ChartJS -->
-<!--<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>-->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="crypto.js"></script>
 </html>
