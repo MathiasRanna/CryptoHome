@@ -25,10 +25,12 @@
 
 <!-- Main body -->
 <div class="container">
-    <div data-bind="foreach: iconArray">
-        <div class="col" style="height: 150px; width: 150px">
-            <img style="height: 150px; width: 150px" src="" data-bind="attr: { src: image}"  alt="crypto_sign"/>
-            <div data-bind="name"></div>
+    <div class="row" data-bind="foreach: iconArray">
+        <div class="col-3 cryptoContainer h-100 d-flex justify-content-center align-items-center">
+            <div data-bind="attr: { id: id}">
+                <img class="cryptoPic" src="" data-bind="attr: { src: image}"  alt="crypto_sign"/>
+                <div data-bind="text: name" class="cryptoText text-center"></div>
+            </div>
         </div>
     </div>
 
@@ -47,8 +49,5 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
 <!-- ChartJS -->
 <!--<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>-->
-<script src="https://cdn.jsdelivr.net/gh/mzabriskie/axios@master/dist/axios.min.js"></script>
-<!--<script src="https://cdn.jsdelivr.net/npm/coinapi-io@1.0.2/coinapi_v2.min.js"></script>-->
-<!--<script src="https://cdn.jsdelivr.net/gh/coinapi/coinapi-sdk@master/javascript-rest/example_javascript.js"></script>-->
 <script src="crypto.js"></script>
 </html>
