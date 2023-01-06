@@ -1,4 +1,4 @@
-import {ApiKey} from "./api-env";
+import {ApiKey} from "./api-env.js";
 
 if (typeof window !== 'undefined') {
     window.require = function () {
