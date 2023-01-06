@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CryptoHome</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+    <!-- Font Awesome CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet">
+    <link href="mainCSS.css" rel="stylesheet">
+</head>
+<body>
+<!-- NavBar -->
+<nav class="navbar navbar-expand-lg fixed-top border-bottom">
+    <div class="container">
+        <a class="navbar-brand" href="index.html" tabindex="CryptoHome">CryptoHome</a>
+        <div id="navbarContent">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" aria-current="page" href="https://github.com/MathiasRanna"><i class="fa-brands fa-github"></i> Author</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Main body -->
+<div class="container">
+    <div data-bind="foreach: iconArray">
+        <div class="col" style="height: 150px; width: 150px">
+            <img style="height: 150px; width: 150px" src="" data-bind="attr: { src: image}"  alt="crypto_sign"/>
+            <div data-bind="name"></div>
+        </div>
+    </div>
+
+</div>
+
+
+
+</body>
+<!-- Bootstrap Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+<!-- jQuery Bundle -->
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<!-- KnockOut Bundle -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.min.js"></script>
+<!-- jQueryUI Bundle -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+<!-- ChartJS -->
+<!--<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>-->
+<script src="https://cdn.jsdelivr.net/gh/mzabriskie/axios@master/dist/axios.min.js"></script>
+<!--<script src="https://cdn.jsdelivr.net/npm/coinapi-io@1.0.2/coinapi_v2.min.js"></script>-->
+<!--<script src="https://cdn.jsdelivr.net/gh/coinapi/coinapi-sdk@master/javascript-rest/example_javascript.js"></script>-->
+<script src="crypto.js"></script>
+</html>
