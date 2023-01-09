@@ -153,26 +153,35 @@ var vm = function () {
         if (timePeriod === "year") period_id = "7DAY";
         var startTime = self.calculateStartTime(timePeriod);
         var path = self.baseUri() + "/v1/ohlcv/BITFINEX_SPOT_" + self.currentCoin() + "_USD/history?period_id=" + period_id + "&time_start=" + startTime;
-        console.log(path);
         return self.ajaxHelper(path).done(function (data) {
             self.currentData(data);
         })
     }
 
     self.ajaxHelper = function (url) {
+        console.log("sending POST")
+        $.post()
         return $.ajax({
-            url: url,
-            type: "GET",
-            contentType: "application/jsonp",
-            headers: {"X-CoinAPI-Key": ApiKey},
-            success: function (data, textStatus, request) {
-                console.log(request.getAllResponseHeaders());
+            type: "POST",
+            url: 'php_wrapper.php',
+            data: {'url': url},
+            success: function (data) {
+                console.log(data);
                 return data;
-            },
-            error: function () {
-                alert("Could not retrieve data! Try again in some time!");
             }
         });
+        // return $.ajax({
+        //     url: url,
+        //     type: "GET",
+        //     contentType: "application/jsonp",
+        //     headers: {"X-CoinAPI-Key": ApiKey},
+        //     success: function (data, textStatus, request) {
+        //         return data;
+        //     },
+        //     error: function () {
+        //         alert("Could not retrieve data! Try again in some time!");
+        //     }
+        // });
     }
 
     self.convertToDate = function (isoDate, toDate = true) {
