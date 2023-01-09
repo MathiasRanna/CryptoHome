@@ -1,5 +1,3 @@
-import {ApiKey} from "./api-env.js";
-
 if (typeof window !== 'undefined') {
     window.require = function () {
     };
@@ -154,34 +152,24 @@ var vm = function () {
         var startTime = self.calculateStartTime(timePeriod);
         var path = self.baseUri() + "/v1/ohlcv/BITFINEX_SPOT_" + self.currentCoin() + "_USD/history?period_id=" + period_id + "&time_start=" + startTime;
         return self.ajaxHelper(path).done(function (data) {
-            self.currentData(data);
+            self.currentData(JSON.parse(data));
         })
     }
 
     self.ajaxHelper = function (url) {
         console.log("sending POST")
-        $.post()
         return $.ajax({
             type: "POST",
             url: 'php_wrapper.php',
             data: {'url': url},
             success: function (data) {
-                console.log(data);
-                return data;
+                console.log(JSON.parse(data));
+                return JSON.parse(data);
+            },
+            error: function () {
+                alert("Could not retrieve data! Try again in some time!");
             }
         });
-        // return $.ajax({
-        //     url: url,
-        //     type: "GET",
-        //     contentType: "application/jsonp",
-        //     headers: {"X-CoinAPI-Key": ApiKey},
-        //     success: function (data, textStatus, request) {
-        //         return data;
-        //     },
-        //     error: function () {
-        //         alert("Could not retrieve data! Try again in some time!");
-        //     }
-        // });
     }
 
     self.convertToDate = function (isoDate, toDate = true) {
@@ -206,6 +194,7 @@ var vm = function () {
     }
 
     self.updateChartData = function (chart, param1, param2, dateFormat = true) {
+        console.log(self.currentData());
         var chartLabel = dateFormat ? self.currentData().map(item => self.convertToDate(item.time_period_start)) : self.currentData().map(item => self.convertToDate(item.time_period_start, false));
         if (param1 != null && param2 != null) {
             chart.data.labels = chartLabel;
@@ -259,7 +248,9 @@ var vm = function () {
 };
 
 $(document).ready(function () {
-    ko.applyBindings(new vm());
+    if (window.jQuery){
+        ko.applyBindings(new vm());
+    }
 });
 
 
