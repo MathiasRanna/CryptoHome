@@ -4,6 +4,9 @@ body{
     padding-top: 70px;
 }
 
+.navbar{
+    background-color: white;
+}
 
 .cryptoContainer{
     padding: 20px;
@@ -30,4 +33,12 @@ body{
     margin-bottom: 20px;
     width: 100px;
     height: 100px;
+}
+
+.filter{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.generalBtn{
+    border: 1px #adadad solid;
 }

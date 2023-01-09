@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
     <!-- Font Awesome CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet">
+    <link rel="icon" href="bc.png">
     <link href="mainCSS.css" rel="stylesheet">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
 </head>
 <body>
 <!-- NavBar -->
@@ -18,7 +20,7 @@
         <div id="navbarContent">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item"><a class="nav-link" aria-current="page" href="https://github.com/MathiasRanna"><i
-                        class="fa-brands fa-github"></i> Author</a></li>
+                        class="fa-brands fa-github"></i></a></li>
             </ul>
         </div>
     </div>
@@ -27,16 +29,45 @@
 <!-- Main body -->
 <div id="main" class="container">
     <div class="row" data-bind="foreach: iconArray">
-        <div class="col-3 cryptoContainer">
-            <div class="cryptoContent h-100 d-flex justify-content-center align-items-center">
-                <div data-bind="attr: { id: id}">
+        <div class="col-md-3 cryptoContainer">
+            <div class="cryptoContent h-100 d-flex justify-content-center align-items-center" data-bind="attr: { id: id}, click: $parent.openModal">
+                <div>
                     <img class="cryptoPic" src="" data-bind="attr: { src: image}" alt="crypto_sign"/>
                     <div data-bind="text: name" class="cryptoText text-center"></div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
+<!-- Coin Data -->
+<div id="coinData" class="container d-none">
+    <div id="Filterbar" class="container">
+        <div class="row">
+            <div id="returnHome" class="col-md-1">
+                <button type="button" class="btn btn-light generalBtn" data-bind="event:{click: closeModal}"><i class="fa-solid fa-arrow-left"></i></button>
+            </div>
+            <!-- Filter methods -->
+            <div id="filter" class="col-md-6">
+                <button id="highLow" type="button" class="btn btn-light generalBtn filterBtn active" data-bind="event:{click: changeChartData}" >Price High/Low</button>
+                <button id="volume" type="button" class="btn btn-light generalBtn filterBtn" data-bind="event:{click: changeChartData}" >Volume</button>
+                <button id="trades" type="button" class="btn btn-light generalBtn filterBtn" data-bind="event:{click: changeChartData}" >Trades</button>
+
+            </div>
+            <!-- Timestamps -->
+            <div id="times" class="col-md-4 text-end">
+                <button id="hour" type="button" class="btn btn-light generalBtn hourBtn" data-bind="event:{click: changeChartTime}">Hour</button>
+                <button id="day" type="button" class="btn btn-light generalBtn hourBtn" data-bind="event:{click: changeChartTime}">Day</button>
+                <button id="month" type="button" class="btn btn-light generalBtn active hourBtn" data-bind="event:{click: changeChartTime}">Month</button>
+                <button id="year" type="button" class="btn btn-light generalBtn hourBtn" data-bind="event:{click: changeChartTime}">Year</button>
+            </div>
+        </div>
+    </div>
+    <div style="position:relative;width:100%;height:100%">
+        <div>
+            <canvas id="coinGraph"></canvas>
+        </div>
+    </div>
 </div>
 
 
@@ -50,6 +81,6 @@
 <!-- jQueryUI Bundle -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
 <!-- ChartJS -->
-<!--<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>-->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="crypto.js"></script>
 </html>
