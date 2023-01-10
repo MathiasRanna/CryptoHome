@@ -55,10 +55,12 @@ var vm = function () {
     self.currentCoin = ko.observable('BTC');
     self.currentData = ko.observableArray([]);
     self.chart = ko.observable('');
+    self.apiCallsLeft = ko.observable('');
 
     self.closeModal = function () {
         $('#coinData').fadeOut('fast');
         $('#main').fadeIn('slow').removeClass('d-none');
+        $('#apiCalls').fadeOut("fast");
         self.chart().destroy();
     }
 
@@ -69,6 +71,7 @@ var vm = function () {
         });
         $('#main').fadeOut('fast');
         $('#coinData').fadeIn('slow').removeClass('d-none');
+        $('#apiCalls').fadeIn('slow').removeClass('d-none');
     }
 
     self.formatDate = function (date) {
@@ -152,7 +155,10 @@ var vm = function () {
         var startTime = self.calculateStartTime(timePeriod);
         var path = self.baseUri() + "/v1/ohlcv/BITFINEX_SPOT_" + self.currentCoin() + "_USD/history?period_id=" + period_id + "&time_start=" + startTime;
         return self.ajaxHelper(path).done(function (data) {
-            self.currentData(JSON.parse(data));
+            var apiCallsLeft = data.split('#')[0];
+            self.apiCallsLeft(apiCallsLeft);
+            var chartData = data.split('#')[1];
+            self.currentData(JSON.parse(chartData));
         })
     }
 
@@ -163,8 +169,8 @@ var vm = function () {
             url: 'php_wrapper.php',
             data: {'url': url},
             success: function (data) {
-                console.log(JSON.parse(data));
-                return JSON.parse(data);
+                console.log((data));
+                return (data);
             },
             error: function () {
                 alert("Could not retrieve data! Try again in some time!");
