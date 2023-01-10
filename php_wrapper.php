@@ -12,8 +12,8 @@ if (isset($_POST["url"])) {
         $res = $client->request('GET', $url, [
             'headers' => ['X-CoinAPI-Key' => $_ENV['XCoinAPIKey']]
         ]);
-
-        echo $res->getBody();
+        $apiCallsLeft = $res->getHeader('x-ratelimit-remaining');
+        echo $apiCallsLeft[0] . "#" .  $res->getBody();
     } catch (\GuzzleHttp\Exception\GuzzleException $e) {
         echo json_encode($e);
     }

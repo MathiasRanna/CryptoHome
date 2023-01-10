@@ -1,44 +1,51 @@
-body{
+body {
     font-family: 'Open Sans', sans-serif;
     height: 100vh;
     padding-top: 70px;
 }
 
-.navbar{
+.navbar {
     background-color: white;
 }
 
-.cryptoContainer{
+.cryptoContainer {
     padding: 20px;
 }
 
-.cryptoContent{
+.cryptoContent {
     min-height: 250px;
     border: 1px gray solid;
     border-radius: 15px;
 }
+
 .cryptoContent:hover {
     color: #333;
-    background-color: rgba(46,47,45,0.04);
+    background-color: rgba(46, 47, 45, 0.04);
     border-color: #adadad;
     cursor: pointer;
 }
 
-.cryptoText{
+.cryptoText {
     margin-top: 15px;
     font-size: 20px;
 }
 
-.cryptoPic{
+.cryptoPic {
     margin-bottom: 20px;
     width: 100px;
     height: 100px;
 }
 
-.filter{
+.filter {
     margin-top: 10px;
     margin-bottom: 10px;
 }
-.generalBtn{
+
+.generalBtn {
     border: 1px #adadad solid;
+}
+
+#apiCalls{
+    font-size: 10px;
+    font-style: italic;
 }
